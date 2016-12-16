@@ -5,7 +5,7 @@ var floorHeight = 50;
 var player;
 
 var lastSpawn;
-var obstacles = [];
+var obstacles;
 
 var distances = [
 				40,40,40,40,
@@ -16,11 +16,17 @@ var distances = [
 
 var score;
 
+var gameOver;
+
 function setup() {
     createCanvas(700, 300);
     player = new Player(height, floorHeight);
 	score = 0;
+
+	obstacles = [];
     spawn();
+
+    gameOver = false;
 }
 
 function spawn () { 
@@ -54,6 +60,7 @@ function draw() {
 			if (player.collided(obstacles[i])) {
 				console.log('COLLISION!');
 				noLoop();
+				gameOver = true;
 			}
 		}
 
@@ -70,7 +77,11 @@ function draw() {
 
 function keyPressed() {
 	if (keyCode == 0x20) { // 0x20: space
-		if (!player.isJumping()) {
+		if (gameOver === true) {
+			setup();
+			loop();
+		}
+		else if (!player.isJumping()) {
 			player.jump ();
 		}
 	}
