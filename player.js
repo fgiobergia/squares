@@ -14,6 +14,8 @@ class Player {
 		this.color = color(255,0,0);
 
 		this.side = 20;
+
+		this.jumpState = 0;
 	}
 
 	show () {
@@ -33,7 +35,11 @@ class Player {
 
 		if (this.y == 0) {
 			//this.yspeed = 0; // normal force or something
-			this.yspeed *= -.5;
+			this.yspeed *= -.4;
+		}
+
+		if (this.y < 10) {
+			this.jumpState = 0;
 		}
 	}
 
@@ -42,7 +48,14 @@ class Player {
 	}
 
 	jump () {
-		this.yspeed = 6;
+		if (this.jumpState == 1) {
+			this.yspeed += 2;
+			this.jumpState = 2;
+		}
+		else if (this.jumpState == 0) {
+			this.yspeed = 6;
+			this.jumpState = 1;
+		}
 	}
 
 	collided (obstacle) {

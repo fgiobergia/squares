@@ -5,7 +5,7 @@ class Obstacle {
 		this.floorHeight = floorHeight;
 
 		this.w = 20;
-		this.h = 20;
+		this.h = random ([20, 20, 20, 20, 40]);
 
 		this.x = this.width - this.w;
 		this.y = 0//this.height - this.floorHeight;

@@ -81,7 +81,7 @@ function keyPressed() {
 			setup();
 			loop();
 		}
-		else if (!player.isJumping()) {
+		else if (true /*!player.isJumping()*/) {
 			player.jump ();
 		}
 	}
