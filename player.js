@@ -38,7 +38,7 @@ class Player {
 			this.yspeed *= -.4;
 		}
 
-		if (this.y < 10) {
+		if (this.y < 10 && this.yspeed < 0) {
 			this.jumpState = 0;
 		}
 	}
