@@ -4,7 +4,6 @@ var floorHeight = 50;
 
 var player;
 
-var unit = 20;
 var lastSpawn;
 var obstacles = [];
 
@@ -15,9 +14,12 @@ var distances = [
 				70
 				];
 
+var score;
+
 function setup() {
     createCanvas(700, 300);
     player = new Player(height, floorHeight);
+	score = 0;
     spawn();
 }
 
@@ -25,15 +27,7 @@ function spawn () {
 	var o = new Obstacle(height, width, floorHeight);
 	obstacles.push(o);
 	nextSpawn = random(distances);
-	/*
-	var j = Math.floor(Math.random() * distances.length * 3);
-	console.log(j);
-	if (j < distances.length) {
-		nextSpawn = distances[j];
-	}
-	else {
-		nextSpawn = j;
-	}*/
+
 }
 
 function draw() {
@@ -54,7 +48,6 @@ function draw() {
 		obstacles[i].show();
 
 		if (obstacles[i].outOfScreen()) {
-			console.log('Bye!')
 			obstacles.splice(i, 1);	
 		}
 		else {
@@ -68,6 +61,10 @@ function draw() {
 	}
 
 	nextSpawn --;
+	score ++;
+
+	textSize(23);
+	text(Math.floor(score / 10), 32, 32);
 
 }
 
