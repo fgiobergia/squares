@@ -8,6 +8,5 @@ Powered javascript + [p5.js](http://p5js.org/)
 
 Give it a try here: [Squares on fgiobergia.com](https://fgiobergia.com/squares/)
 
-Screenshot
 ![screenshot](https://github.com/fgiobergia/squares/blob/master/screen.png?raw=true)
 
