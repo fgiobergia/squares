@@ -1,49 +1,47 @@
 class Obstacle {
-	constructor (height, width, floorHeight) {
-		this.height = height;
-		this.width = width;
-		this.floorHeight = floorHeight;
+    constructor (height, width, floorHeight) {
+        this.height = height;
+        this.width = width;
+        this.floorHeight = floorHeight;
 
-		this.w = 20;
-		this.h = random ([20, 20, 20, 20, 40]);
+        this.w = 20;
+        this.h = random ([20, 20, 20, 20, 40]);
 
-		this.x = this.width - this.w;
-		this.y = 0//this.height - this.floorHeight;
+        this.x = this.width - this.w;
+        this.y = 0;
 
-		this.xspeed = -4;
+        this.xspeed = -4;
 
-	}
+    }
 
-	show () {
-		noStroke();
-		fill(204);
+    show () {
+        noStroke();
+        fill(204);
+        var yRect = this.height - this.floorHeight - this.h - this.y;
+        rect (this.x, yRect, this.w, this.h);
+    }
 
-		var yRect = this.height - this.floorHeight - this.h - this.y;
+    update () {
+        this.x = this.x + this.xspeed;
+    }
 
-		rect (this.x, yRect, this.w, this.h);
-	}
+    outOfScreen () {
+        return (this.x + this.w < 0);
+    }
 
-	update () {
-		this.x = this.x + this.xspeed;
-	}
+    getX () {
+        return this.x;
+    }
 
-	outOfScreen () {
-		return (this.x + this.w < 0);
-	}
+    getY () {
+        return this.y;
+    }
 
-	getX () {
-		return this.x;
-	}
+    getW () {
+        return this.w;
+    }
 
-	getY () {
-		return this.y;
-	}
-
-	getW () {
-		return this.w;
-	}
-
-	getH () {
-		return this.h;
-	}
+    getH () {
+        return this.h;
+    }
 }
